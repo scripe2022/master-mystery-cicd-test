@@ -1,0 +1,127 @@
+@font-face {
+  font-family: "Jersey10-Regular";
+  src: url("./assets/fonts/Jersey10-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+body {
+  font-family: "Jersey10-Regular", monospace;
+}
+
+.home {
+  min-height: 100vh;
+  background-image: url("./assets/images/homepage-background.png");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.center {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+}
+
+.title {
+  margin: 0;
+  font-size: 128px;
+  font-weight: 2000;
+  color: #efc331;
+
+  text-shadow:
+    -4px 0 0 #fff,
+    4px 0 0 #fff,
+    0 -4px 0 #fff,
+    0 4px 0 #fff,
+    -4px -4px 0 #fff,
+    4px -4px 0 #fff,
+    -4px 4px 0 #fff,
+    4px 4px 0 #fff,
+    0 6px 0 rgba(0, 0, 0, 0.25);
+}
+
+.btnStart {
+  width: min(420px, 86vw);
+  height: 100px;
+  border-radius: 999px;
+
+  border: 10px solid #a43a2a;
+  background: #f1c84a;
+
+  font-family: "Jersey10-Regular", monospace;
+  font-size: 64px;
+  font-weight: 700;
+  color: #b24a3b;
+  letter-spacing: 1px;
+
+  box-shadow:
+    0 10px 0 rgba(0, 0, 0, 0.18),
+    inset 0 12px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -12px 0 rgba(0, 0, 0, 0.1);
+
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.btnStart:hover {
+  filter: brightness(1.03);
+}
+
+.btnStart:active {
+  transform: translateY(3px);
+  box-shadow:
+    0 7px 0 rgba(0, 0, 0, 0.18),
+    inset 0 12px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -12px 0 rgba(0, 0, 0, 0.12);
+}
+
+.menuBtn {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+
+  width: 96px;
+  height: 96px;
+
+  display: grid;
+  place-items: center;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menuBtn img {
+  width: 80px;
+  height: 80px;
+  display: block;
+
+  user-select: none;
+  pointer-events: none;
+
+  filter: drop-shadow(0 0 0 #a43a2a);
+}
+
+.menuBtn:hover img {
+  transform: scale(1.04);
+}
+
+.menuBtn:active img {
+  transform: translateY(2px) scale(0.98);
+}
+
+.menuBtn:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.75);
+  outline-offset: 6px;
+  border-radius: 999px;
+}

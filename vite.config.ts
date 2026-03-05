@@ -12,7 +12,7 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/master-mystery/",
+  base: "/master-mystery-cicd-test/",
   test: {
     globals: true,
     environment: "jsdom",

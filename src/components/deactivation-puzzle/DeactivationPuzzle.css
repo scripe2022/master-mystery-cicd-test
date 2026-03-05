@@ -1,0 +1,434 @@
+/* Overlay */
+
+.deactivation-overlay {
+  position: fixed;
+
+  --scale: min(calc(100vw / 1440), calc(100vh / 1024));
+  --sizeing: min(1vw, 1.40625vh);
+  --shadow_color: rgba(0, 0, 0, 0.6);
+  font-size: min(1vw, 1.40625vh);
+
+  width: calc(1440 * var(--scale));
+  height: calc(1024 * var(--scale));
+
+  background: var(--shadow_color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+/* Panel */
+
+.deactivation-panel {
+  position: relative;
+  width: calc(700 * var(--scale));
+  padding: calc(40 * var(--scale)) calc(50 * var(--scale));
+  border-radius: calc(2 * var(--sizeing));
+
+  background: linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border: calc(3 * var(--scale)) solid #2a4a7f;
+  box-shadow:
+    0 0 calc(30 * var(--scale)) rgba(15, 52, 96, 0.5),
+    inset 0 0 calc(20 * var(--scale)) rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(30 * var(--scale));
+
+  transition:
+    border-color 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+.deactivation-panel--success {
+  border-color: #00c853;
+  box-shadow:
+    0 0 calc(40 * var(--scale)) rgba(0, 200, 83, 0.4),
+    inset 0 0 calc(20 * var(--scale)) rgba(0, 200, 83, 0.1);
+}
+
+/* Close Button */
+
+.deactivation-close {
+  position: absolute;
+  top: calc(10 * var(--scale));
+  right: calc(10 * var(--scale));
+  font-size: calc(29 * var(--scale));
+
+  background: #a43a2a;
+  color: white;
+
+  border: none;
+  border-radius: 50%;
+
+  width: calc(50 * var(--scale));
+  height: calc(50 * var(--scale));
+
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease;
+  z-index: 10;
+}
+
+.deactivation-close:hover {
+  transform: scale(1.1);
+  background: #c0392b;
+}
+
+/* Title */
+
+.deactivation-title {
+  font-family: "Jersey10-Regular", monospace;
+  font-size: calc(43 * var(--scale));
+  color: #efc331;
+  text-align: center;
+  margin: 0;
+  text-shadow: 0 0 calc(10 * var(--scale)) rgba(239, 195, 49, 0.3);
+}
+
+/* Metrics Row */
+
+.deactivation-metrics {
+  display: flex;
+  gap: calc(25 * var(--scale));
+  width: 100%;
+  justify-content: center;
+}
+
+/* Individual Metric Button */
+
+.deactivation-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(12 * var(--scale));
+
+  width: calc(170 * var(--scale));
+  padding: calc(20 * var(--scale)) calc(15 * var(--scale));
+  border-radius: calc(12 * var(--scale));
+  border: calc(2 * var(--scale)) solid transparent;
+
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.15s ease;
+
+  font-family: "Jersey10-Regular", monospace;
+}
+
+/* Active state (ON) */
+.deactivation-metric--active {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Inactive state (OFF) */
+.deactivation-metric--inactive {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(100, 100, 100, 0.3);
+  opacity: 0.6;
+}
+
+.deactivation-metric:active {
+  transform: scale(0.95);
+}
+
+/* Metric Icon */
+
+.deactivation-metric__icon {
+  font-size: calc(72 * var(--scale));
+  line-height: 1;
+  transition: filter 0.3s ease;
+}
+
+.deactivation-metric--inactive .deactivation-metric__icon {
+  filter: grayscale(0.8) brightness(0.5);
+}
+
+/* Metric Label */
+
+.deactivation-metric__label {
+  font-size: calc(32 * var(--scale));
+  color: #e0e0e0;
+  text-align: center;
+}
+
+.deactivation-metric--inactive .deactivation-metric__label {
+  color: #666;
+}
+
+/* Metric Status */
+
+.deactivation-metric__status {
+  font-size: calc(26 * var(--scale));
+  font-weight: 700;
+  padding: calc(4 * var(--scale)) calc(16 * var(--scale));
+  border-radius: calc(6 * var(--scale));
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.deactivation-metric--active .deactivation-metric__status {
+  background: #00c853;
+  color: #fff;
+}
+
+.deactivation-metric--inactive .deactivation-metric__status {
+  background: #555;
+  color: #999;
+}
+
+/* Result Message */
+
+.deactivation-result {
+  font-family: "Jersey10-Regular", monospace;
+  font-size: calc(50 * var(--scale));
+  font-weight: 700;
+  text-align: center;
+  padding: calc(8 * var(--scale)) calc(30 * var(--scale));
+  border-radius: calc(8 * var(--scale));
+}
+
+.deactivation-result--correct {
+  color: #00e676;
+  background: rgba(0, 230, 118, 0.15);
+  text-shadow: 0 0 calc(15 * var(--scale)) rgba(0, 230, 118, 0.5);
+}
+
+.deactivation-result--incorrect {
+  color: #ff5252;
+  background: rgba(255, 82, 82, 0.15);
+  text-shadow: 0 0 calc(15 * var(--scale)) rgba(255, 82, 82, 0.5);
+}
+
+/* Submit Button */
+
+.deactivation-submit {
+  font-family: "Jersey10-Regular", monospace;
+  font-size: calc(43 * var(--scale));
+  font-weight: 700;
+  color: #a43a2a;
+  letter-spacing: 1px;
+
+  padding: calc(10 * var(--scale)) calc(50 * var(--scale));
+  border-radius: calc(8 * var(--scale));
+  border: calc(2 * var(--scale)) solid #a43a2a;
+  background: #efc331;
+
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    filter 0.15s ease;
+
+  box-shadow:
+    0 calc(4 * var(--scale)) 0 rgba(0, 0, 0, 0.2),
+    inset 0 calc(3 * var(--scale)) 0 rgba(255, 255, 255, 0.3);
+}
+
+.deactivation-submit:hover {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+.deactivation-submit:active {
+  transform: translateY(calc(3 * var(--scale)));
+  box-shadow: 0 calc(1 * var(--scale)) 0 rgba(0, 0, 0, 0.2);
+}
+
+.deactivation-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+
+/* Hover Animations - Electricity (buzz/spark) */
+
+@keyframes electricity-buzz {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    text-shadow:
+      0 0 calc(8 * var(--scale)) #00d4ff,
+      0 0 calc(20 * var(--scale)) #00d4ff,
+      0 0 calc(40 * var(--scale)) #0077ff;
+  }
+  10% {
+    transform: translate(calc(-1 * var(--scale)), calc(1 * var(--scale)));
+  }
+  20% {
+    transform: translate(calc(2 * var(--scale)), calc(-1 * var(--scale)));
+    text-shadow:
+      0 0 calc(12 * var(--scale)) #fff,
+      0 0 calc(25 * var(--scale)) #00d4ff,
+      0 0 calc(50 * var(--scale)) #0077ff;
+  }
+  30% {
+    transform: translate(calc(-1 * var(--scale)), 0);
+  }
+  40% {
+    transform: translate(calc(1 * var(--scale)), calc(1 * var(--scale)));
+    text-shadow:
+      0 0 calc(6 * var(--scale)) #00d4ff,
+      0 0 calc(15 * var(--scale)) #00d4ff;
+  }
+  50% {
+    transform: translate(calc(-2 * var(--scale)), calc(-1 * var(--scale)));
+  }
+  60% {
+    transform: translate(calc(1 * var(--scale)), 0);
+    text-shadow:
+      0 0 calc(15 * var(--scale)) #fff,
+      0 0 calc(30 * var(--scale)) #00d4ff,
+      0 0 calc(60 * var(--scale)) #0077ff;
+  }
+  70% {
+    transform: translate(0, calc(1 * var(--scale)));
+  }
+  80% {
+    transform: translate(calc(-1 * var(--scale)), calc(-1 * var(--scale)));
+  }
+  90% {
+    transform: translate(calc(1 * var(--scale)), 0);
+    text-shadow: 0 0 calc(5 * var(--scale)) #00d4ff;
+  }
+}
+
+@keyframes spark-flash {
+  0%,
+  90%,
+  100% {
+    opacity: 0;
+  }
+  92%,
+  96% {
+    opacity: 1;
+  }
+  94% {
+    opacity: 0;
+  }
+}
+
+.deactivation-metric--electricity.deactivation-metric--active:hover {
+  border-color: #00d4ff;
+  box-shadow:
+    0 0 calc(15 * var(--scale)) rgba(0, 212, 255, 0.4),
+    0 0 calc(30 * var(--scale)) rgba(0, 119, 255, 0.2),
+    inset 0 0 calc(10 * var(--scale)) rgba(0, 212, 255, 0.1);
+  background: rgba(0, 212, 255, 0.1);
+}
+
+.deactivation-metric--electricity.deactivation-metric--active:hover .deactivation-metric__icon {
+  animation: electricity-buzz 0.3s infinite;
+}
+
+/* Hover Animations - Magnetism (attract/pull) */
+
+@keyframes magnet-pull {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.08) rotate(-2deg);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+  75% {
+    transform: scale(1.08) rotate(2deg);
+  }
+}
+
+@keyframes magnet-field-lines {
+  0% {
+    box-shadow:
+      0 0 calc(10 * var(--scale)) rgba(156, 39, 176, 0.3),
+      0 0 calc(20 * var(--scale)) rgba(156, 39, 176, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 calc(20 * var(--scale)) rgba(156, 39, 176, 0.5),
+      0 0 calc(40 * var(--scale)) rgba(156, 39, 176, 0.2),
+      0 0 calc(60 * var(--scale)) rgba(156, 39, 176, 0.1);
+  }
+  100% {
+    box-shadow:
+      0 0 calc(10 * var(--scale)) rgba(156, 39, 176, 0.3),
+      0 0 calc(20 * var(--scale)) rgba(156, 39, 176, 0.1);
+  }
+}
+
+.deactivation-metric--magnetism.deactivation-metric--active:hover {
+  border-color: #9c27b0;
+  background: rgba(156, 39, 176, 0.1);
+  animation: magnet-field-lines 1.5s ease-in-out infinite;
+}
+
+.deactivation-metric--magnetism.deactivation-metric--active:hover .deactivation-metric__icon {
+  animation: magnet-pull 1.2s ease-in-out infinite;
+}
+
+/* Hover Animations - Heat (glow/radiate) */
+
+@keyframes heat-glow {
+  0%,
+  100% {
+    text-shadow:
+      0 0 calc(8 * var(--scale)) #ff6600,
+      0 0 calc(20 * var(--scale)) #ff3300;
+    transform: scale(1);
+  }
+  33% {
+    text-shadow:
+      0 0 calc(15 * var(--scale)) #ff8800,
+      0 0 calc(30 * var(--scale)) #ff4400,
+      0 0 calc(45 * var(--scale)) #ff0000;
+    transform: scale(1.05);
+  }
+  66% {
+    text-shadow:
+      0 0 calc(10 * var(--scale)) #ffaa00,
+      0 0 calc(25 * var(--scale)) #ff5500,
+      0 0 calc(50 * var(--scale)) #ff2200;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes heat-shimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.deactivation-metric--heat.deactivation-metric--active:hover {
+  border-color: #ff5722;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 87, 34, 0.15) 0%,
+    rgba(255, 152, 0, 0.1) 50%,
+    rgba(255, 87, 34, 0.15) 100%
+  );
+  background-size: 200% 200%;
+  animation: heat-shimmer 2s ease infinite;
+  box-shadow:
+    0 0 calc(15 * var(--scale)) rgba(255, 87, 34, 0.4),
+    0 0 calc(30 * var(--scale)) rgba(255, 87, 34, 0.2),
+    inset 0 0 calc(10 * var(--scale)) rgba(255, 152, 0, 0.1);
+}
+
+.deactivation-metric--heat.deactivation-metric--active:hover .deactivation-metric__icon {
+  animation: heat-glow 1.5s ease-in-out infinite;
+}

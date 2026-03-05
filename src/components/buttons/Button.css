@@ -1,0 +1,162 @@
+:root {
+  /* ===== Sizing ===== */
+  --unit: min(1vw, 1.40625vh);
+
+  /* ===== Colors ===== */
+  --color-yellow: #efc331;
+  --color-orange: #f58614;
+  --color-red: #a43a2a;
+  --color-red-dark: #600202;
+  --color-red-mid: #bf0f03;
+  --color-text: #b23b2b;
+
+  /* ===== Typography ===== */
+  --font-primary: "Jersey10-Regular", monospace;
+  --font-weight-bold: 700;
+  --text-shadow-light: 0px 1px 0px rgba(255, 255, 255, 0.4);
+  --letter-spacing: 1px;
+
+  /* ===== Effects ===== */
+  --transition-fast: 0.1s ease-in-out;
+  --highlight-gradient: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+}
+
+/* ===================================== */
+/* Base Button */
+/* ===================================== */
+
+.btn {
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  position: relative;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  text-shadow: var(--text-shadow-light);
+  letter-spacing: var(--letter-spacing);
+
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    filter var(--transition-fast);
+  font-size: var(--btn-font-size, inherit);
+}
+
+/* ===================================== */
+/* Start Button */
+/* ===================================== */
+
+.btn-start {
+  width: calc(30 * var(--unit));
+  height: calc(10 * var(--unit));
+
+  border-radius: calc(10 * var(--unit));
+
+  background-color: var(--color-yellow);
+
+  border: calc(0.3 * var(--unit)) solid var(--color-red);
+
+  --btn-font-size: clamp(16px, calc(4 * var(--unit)), 48px);
+
+  box-shadow:
+    0px calc(1 * var(--unit)) 0px var(--color-red-mid),
+    0px calc(1.2 * var(--unit)) 0px var(--color-red-dark),
+    0px calc(3 * var(--unit)) calc(1.5 * var(--unit)) rgba(0, 0, 0, 0.4);
+}
+
+.btn-start::after {
+  content: "";
+  position: absolute;
+  top: calc(0.6 * var(--unit));
+  left: calc(0.6 * var(--unit));
+  right: calc(0.6 * var(--unit));
+  height: 42%;
+  background: var(--highlight-gradient);
+  border-radius: calc(10 * var(--unit)) calc(10 * var(--unit)) calc(1 * var(--unit))
+    calc(1 * var(--unit));
+  pointer-events: none;
+}
+
+.btn-start:hover {
+  filter: brightness(1.05);
+  transform: scale(1.04);
+}
+
+.btn-start:active {
+  transform: translateY(8px);
+  box-shadow:
+    0px 4px 0px #d65a18,
+    0px 6px 4px rgba(0, 0, 0, 0.2),
+    inset 0px 2px 0px rgba(255, 255, 255, 0.5);
+}
+
+/* ===================================== */
+/* Round Button */
+/* ===================================== */
+
+.btn-round {
+  width: calc(10 * var(--unit));
+  height: calc(10 * var(--unit));
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 1;
+
+  background: radial-gradient(circle at 50% 10%, var(--color-yellow) 60%, var(--color-orange) 100%);
+
+  border: 0.15em solid var(--color-red);
+
+  font-size: 4em;
+  line-height: 1;
+
+  box-shadow:
+    inset 0px -6px 8px rgba(0, 0, 0, 0.2),
+    inset 0px 4px 6px rgba(255, 255, 255, 0.6);
+}
+
+.btn-round::before {
+  content: "";
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 35%;
+  background: var(--highlight-gradient);
+  border-radius: 50% 50% 45% 45%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.btn-round::after {
+  content: "";
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 10%;
+  background: rgba(255, 255, 255, 0.3);
+  filter: blur(4px);
+  border-radius: 50%;
+}
+
+.btn-round:hover {
+  filter: brightness(1.08);
+  transform: scale(1.04);
+}
+
+.btn-round:active {
+  transform: scale(0.9);
+}

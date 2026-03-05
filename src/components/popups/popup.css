@@ -1,0 +1,56 @@
+.popup-overlay {
+  position: fixed;
+
+  --scale: min(calc(100vw / 1440), calc(100vh / 1024));
+  --shadow_color: rgba(0, 0, 0, 0.5);
+  --sizeing: min(1vw, 1.40625vh);
+  --brown-orange: #a43a2a;
+  font-size: min(1vw, 1.40625vh);
+
+  width: calc(1440 * var(--scale));
+  height: calc(1024 * var(--scale));
+
+  background: var(--shadow_color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+.popup-content {
+  padding: calc(30 * var(--scale));
+  border-radius: calc(2 * var(--sizeing));
+  width: calc(800 * var(--scale));
+  height: calc(900 * var(--scale));
+  position: relative;
+  background-color: var(--brown-orange);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-image {
+  width: calc(800 * var(--scale));
+  object-fit: contain;
+}
+
+.popup-close {
+  position: absolute;
+  top: calc(10 * var(--scale));
+  right: calc(10 * var(--scale));
+  font-size: 2em;
+
+  background: red;
+  color: white;
+
+  border: none;
+  border-radius: 50%;
+
+  width: calc(60 * var(--scale));
+  height: calc(60 * var(--scale));
+
+  cursor: pointer;
+}

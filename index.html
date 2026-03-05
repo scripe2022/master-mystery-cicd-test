@@ -7,6 +7,23 @@
     <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function (location) {
+        if (!location.search.startsWith("?/")) return;
+
+        const decodedPath = location.search
+          .slice(1)
+          .split("&")
+          .map((part) => part.replace(/~and~/g, "&"))
+          .join("?");
+
+        window.history.replaceState(
+          null,
+          "",
+          location.pathname.replace(/\/$/, "") + decodedPath + location.hash,
+        );
+      })(window.location);
+    </script>
     <title>master-mystery</title>
   </head>
   <body>
